@@ -11,13 +11,13 @@
  Text Domain:  woopress-child
 */
 .bc-type-3, .bc-type-4, .bc-type-5, .bc-type-6{
-	background-size: cover !important;
+  background-size: cover !important;
 }
 .full-width, article{
-	width: 100%;
+  width: 100%;
 }
 select{
-	height: 39px;
+  height: 39px;
 }
 .out-stock .wr-c{
   line-height: 14px;
@@ -499,7 +499,7 @@ h1, h2, h3, h4, h5, h6{
 
 /*FOOTER WIDGET STYLES */
 .footer-top{
-  background: #509e2f;
+  background: #58595b;
 }
 .footer-top .container{
   background: url('images/footer-bg.png') bottom right 25px no-repeat;
@@ -769,4 +769,9 @@ h1, h2, h3, h4, h5, h6{
 }
 .modal-form {
   margin: 10px 0 0 0;
+}
+@media screen and (min-width: 1200px){
+  .row-count-3 div.product-category, div.products-list div.product-category {
+    width: 32.7% !important;
+  }
 }
