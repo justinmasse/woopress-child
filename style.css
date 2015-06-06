@@ -499,7 +499,7 @@ h1, h2, h3, h4, h5, h6{
 
 /*FOOTER WIDGET STYLES */
 .footer-top{
-  background: #58595b;
+  background: #2e6135;
 }
 .footer-top .container{
   background: url('images/footer-bg.png') bottom right 25px no-repeat;
@@ -521,6 +521,10 @@ h1, h2, h3, h4, h5, h6{
   color: #fff;
   padding: 7px 9px 7px 9px;
   font-size: 12px;
+}
+.copyright-1 .container .row-copyrights, .copyright-2 .container .row-copyrights, .copyright-3 .container .row-copyrights, .copyright .container .row-copyrights{
+  border-top: 3px solid #fff;
+  color: #fff;
 }
 
 /* GRID FOR NONE INTERACTIVE POST TYPES */
