@@ -124,7 +124,7 @@ if ($hover == 'swap') {
             <footer class="footer-product">
                 <?php echo et_wishlist_btn(__('Wishlist', ETHEME_DOMAIN)); ?>
                 <?php if (etheme_get_option('quick_view')): ?>
-                    <span class="show-quickly" data-prodid="<?php echo $post->ID;?>"><?php _e('Quick View', ETHEME_DOMAIN) ?></span>
+                    <span class="show-quickly" data-prodid="<?php echo $post->ID;?>"></span>
                 <?php endif ?>
             </footer>
         </div>
