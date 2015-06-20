@@ -8,7 +8,8 @@ function theme_enqueue_styles() {
 
     wp_enqueue_style( 'child-style', get_stylesheet_uri(), array( 'bootstrap', 'parent-style' ) );
     wp_enqueue_script('child-etheme', get_stylesheet_uri().'/../js/etheme.js',$script_depends,false,true);
-    wp_enqueue_script('jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js',array('jquery'),false,true);
+    wp_enqueue_script('jquery-ui-datepicker');
+    wp_enqueue_style('jquery-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css');
 }
 
 require_once( get_stylesheet_directory() . '/framework/init.php' );
