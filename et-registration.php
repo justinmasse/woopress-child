@@ -46,12 +46,19 @@ if (!$user_ID) {
 
                                                 <?php 
                                                 $rand = rand(100,1000);
+                                                echo '1';
                                                 $captcha_instance = new ReallySimpleCaptcha();
+                                                echo '2';
                                                 $captcha_instance->bg = array( 229, 83, 76 );
+                                                echo '3';
                                                 $word = $captcha_instance->generate_random_word();
+                                                echo '4';
                                                 $prefix = mt_rand();
+                                                echo '5';
                                                 $img_name = $captcha_instance->generate_image( $prefix, $word );
+                                                echo '6';
                                                 $captcha_img = ETHEME_CODE_URL.'/inc/really-simple-captcha/tmp/'.$img_name;
+                                                echo '7';
                                                 ?>
                                                     <form class="et-register-form form-<?php echo $rand; ?>" action="" method="get">
                                                         <div id="register-popup-result"></div> 
