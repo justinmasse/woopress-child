@@ -44,7 +44,74 @@ if (!$user_ID) {
                                                 <h3 class="title"><span><?php _e('Create Account', ETHEME_DOMAIN); ?></span></h3>
                                                 <div id="result"></div> 
 
-                                                <?php et_register_form(); ?>
+                                                <?php 
+                                                $rand = rand(100,1000);
+                                                $captcha_instance = new ReallySimpleCaptcha();
+                                                $captcha_instance->bg = array( 229, 83, 76 );
+                                                $word = $captcha_instance->generate_random_word();
+                                                $prefix = mt_rand();
+                                                $img_name = $captcha_instance->generate_image( $prefix, $word );
+                                                $captcha_img = ETHEME_CODE_URL.'/inc/really-simple-captcha/tmp/'.$img_name;
+                                                ?>
+                                                    <form class="et-register-form form-<?php echo $rand; ?>" action="" method="get">
+                                                        <div id="register-popup-result"></div> 
+                                                        <div class="login-fields">
+                                                            <p class="form-row">
+                                                                <label class=""><?php _e( "Enter your username", ETHEME_DOMAIN ) ?> <span class="required">*</span></label>
+                                                                <input type="text" name="username" class="text input-text" />
+                                                            </p>
+                                                            <p class="form-row">
+                                                                <label class=""><?php _e( "Enter your E-mail address", ETHEME_DOMAIN ) ?> <span class="required">*</span></label>
+                                                                <input type="text" name="email" class="text input-text" />
+                                                            </p>
+                                                            <p class="form-row">
+                                                                <label class=""><?php _e( "Enter your password", ETHEME_DOMAIN ) ?> <span class="required">*</span></label>
+                                                                <input type="password" name="et_pass" class="text input-text" />
+                                                            </p>
+                                                            <p class="form-row">
+                                                                <label class=""><?php _e( "Re-enter your password", ETHEME_DOMAIN ) ?> <span class="required">*</span></label>
+                                                                <input type="password" name="et_pass2" class="text input-text" />
+                                                            </p>
+                                                        </div>
+                                                        <div class="captcha-block">
+                                                            <img src="<?php echo $captcha_img; ?>">
+                                                            <input type="text" name="captcha-word" class="captcha-input">
+                                                            <input type="hidden" name="captcha-prefix" value="<?php echo $prefix; ?>">
+                                                        </div>
+                                                        <p class="form-row right">
+                                                            <input type="hidden" name="et_register" value="1">
+                                                            <button class="btn btn-black big text-center submitbtn" type="submit"><span><?php _e( "Register", ETHEME_DOMAIN ) ?></span></button>
+                                                        </p>
+                                                    </form>
+                                                    <script type="text/javascript">
+                                                        jQuery(function($){
+                                                            $('.form-<?php echo $rand; ?>').submit(function(e) {
+                                                                e.preventDefault();
+                                                                $('.form-<?php echo $rand; ?> div#register-popup-result').html('<img src="<?php echo get_template_directory_uri(); ?>/images/loading.gif" class="loader" />').fadeIn();
+                                                                var input_data = $(this).serialize();
+                                                                input_data += '&action=et_register_action';
+                                                                $.ajax({
+                                                                    type: "GET",
+                                                                    dataType: "JSON",
+                                                                    url: "<?php echo admin_url( 'admin-ajax.php' ); ?>",
+                                                                    data: input_data,
+                                                                    success: function(response){
+                                                                        $('.loader').remove();
+                                                                        if(response.status == 'error') {
+                                                                            var msgHtml = '<span class="error">' + response.msg + '</span>';
+                                                                            $('<div>').html(msgHtml).appendTo('.form-<?php echo $rand; ?> div#register-popup-result').hide().fadeIn('slow');
+                                                                            
+                                                                        } else {
+                                                                            var msgHtml = '<span class="success">' + response.msg + '</span>';
+                                                                            $('<div>').html(msgHtml).appendTo('.form-<?php echo $rand; ?> div#register-popup-result').hide().fadeIn('slow');
+                                                                            $(this).find("input[type=text], input[type=password], textarea").val("");
+                                                                        }
+                                                                    }
+                                                                });
+                                                                
+                                                            });
+                                                        }, jQuery);
+                                                    </script>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
