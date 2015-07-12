@@ -50,7 +50,7 @@
 				</div>
 			<?php endif; ?>
 			
-			<div class="content full-width <?php echo esc_attr($content_span); ?>">
+			<div class="content <?php echo esc_attr($content_span); ?>">
 				<?php if(have_posts()): while(have_posts()) : the_post(); ?>
 				
 					<article  <?php post_class('blog-post post-single'); ?> id="post-<?php the_ID(); ?>" >
