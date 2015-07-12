@@ -577,6 +577,8 @@ figure.effect-goliath p {
   text-transform: none;
   font-size: 90%;
   opacity: 0;
+  line-height: 1.3em;
+  text-align: left;
   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
   transition: opacity 0.35s, transform 0.35s;
   -webkit-transform: translate3d(0,50px,0);
