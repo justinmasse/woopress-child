@@ -74,11 +74,7 @@
 					
 					<?php wp_reset_query(); ?>
 					<h4 class="meta-title"><span>Categories</span></h4>
-				<?php elseif ($a == 6):?>
-					<div class="filter-wrap">
-						<?php if(!function_exists('dynamic_sidebar') || !dynamic_sidebar('shop-widgets-area')): ?>
 
-						<?php endif; ?>	
 						
 						
 				
